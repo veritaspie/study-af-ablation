@@ -1,0 +1,7 @@
+inherit_from: ./finetune_lvr05_high.yaml
+
+experiment_name: af_ablation_202602_eval_lvr05_high
+
+eval:
+  checkpoint_path: null
+  threshold_rule: sens==spec

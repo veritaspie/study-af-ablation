@@ -1,0 +1,62 @@
+inherit_from: /data/projects/ai-ecg/configs/base.yaml
+
+experiment_name: af_ablation_202602_finetune_lvr05_high
+output_dir: /data/projects/ai-ecg/outputs/af_ablation_202602
+
+runtime:
+  accelerator: gpu
+  devices: 1
+  strategy: auto
+  precision: 32
+  log_every_n_steps: 20
+  num_sanity_val_steps: 0
+
+data:
+  source: pkl
+  manifest_path: /data/projects/study-af-ablation/manifests/finetune_lvr05_high.parquet
+  split_column: split
+  split_values:
+    train: train
+    valid: valid
+    test: test
+  label_columns: [LVR05_high]
+  signal_length: 2500
+  downsample_to_signal_length: true
+  batch_size: 32
+  num_workers: 8
+  leads: [I, II, III, AVR, AVL, AVF, V1, V2, V3, V4, V5, V6]
+  pkl:
+    path_column: pkl_path
+    value_scale: 4.0
+
+model:
+  vit:
+    in_channels: 12
+    seq_len: 2500
+    patch_size: 25
+    embed_dim: 768
+    depth: 12
+    mlp_dim: 3072
+    heads: 12
+    dim_head: 64
+    dropout: 0.0
+    attn_dropout: 0.0
+    use_cls_token: true
+    sinusoid_pos_embed: true
+    pooling: cls_or_mean
+    num_classes: 1
+
+finetune:
+  lr: 3.0e-4
+  weight_decay: 0.05
+  freeze_encoder: false
+  pretrained_checkpoint: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_pretrain_emory_partial_signal_pretrain_20260221_154140/checkpoints/last.ckpt
+  run_test_after_fit: true
+  scheduler:
+    name: cosine
+    t_max: 20
+
+finetune_cmd:
+  trainer:
+    max_epochs: 20
+    accumulate_grad_batches: 1

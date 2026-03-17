@@ -1,0 +1,36 @@
+inherit_from: ./finetune_lvr05_high.yaml
+
+experiment_name: af_ablation_202602_hparam_search_lvr05_high
+
+finetune_cmd:
+  trainer:
+    max_epochs: 10
+    accumulate_grad_batches: 1
+
+hparam_search:
+  framework: grid
+  trial_limit: 10
+  n_sample_sets: 10
+  objective_metric: test_macro_auroc
+  maximize: true
+  grid_shuffle: true
+  prune:
+    enabled: true
+    strategy: median
+    min_sets_before_prune: 3
+    min_completed_trials: 3
+    slack: 0.0
+  sample:
+    seed: 42
+    group_column: pid
+    replacement: false
+    train_frac: 0.5
+    valid_frac: 0.8
+    test_frac: 0.8
+    train_max_rows: 900
+    valid_max_rows: 110
+    test_max_rows: 100
+  search_space:
+    finetune.num_freeze_layers: [0, 1, 6, 9]
+    finetune.lr: [1.0e-2, 1.0e-3, 1.0e-4]
+    data.batch_size: [16, 32, 64, 128]

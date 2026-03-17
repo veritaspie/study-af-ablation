@@ -1,0 +1,13 @@
+inherit_from: ./finetune_lvr05_high_rfca_ssl_i0001_mtae.yaml
+
+experiment_name: af_ablation_202602_extract_features_rfca_ssl_i0001_mtae
+
+feature_extraction:
+  model_source: ssl
+  checkpoint_path: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_pretrain_emory_i0001_mtae_echonext_longitudinal_gap3_pretrain_20260311_024344/checkpoints/last.ckpt
+  split_names: all
+  batch_size: 128
+  num_workers: 8
+  deterministic_preprocessing: true
+  enable_augmentation: false
+  include_manifest_columns: [pid, LVR05_TotalLB]
