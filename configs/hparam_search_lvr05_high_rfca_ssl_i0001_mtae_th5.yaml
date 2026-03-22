@@ -7,8 +7,8 @@ data:
 
 hparam_search:
   framework: grid
-  trial_limit: 25
-  n_sample_sets: 10
+  trial_limit: 8
+  n_sample_sets: 3
   objective_metric: test_macro_auroc
   maximize: true
   grid_shuffle: true
@@ -20,9 +20,12 @@ hparam_search:
     valid_frac: 1.0
     test_frac: 1.0
   search_space:
-    finetune.lr: [3.0e-2, 1.0e-2, 1.0e-3, 3.0e-4, 1.0e-4]
-    finetune.weight_decay: [1.0e-2, 5.0e-2]
-    finetune.layer_decay: [0.5, 0.8, 0.9, 1.0]
-    data.batch_size: [16, 32, 64, 128]
+    finetune.lr: [1.0e-3,]
+    finetune.pretrained_checkpoint: [
+      "/data/projects/study-time-contrast/outputs/lejepa/study_time_contrast_pretrain_emory_i0001_lejepa_ggae_echonext_all_samples_knn_p05_mlp_head_sp_dijkstra_parallel_sb8192_pretrain_20260320_002118/checkpoints/pretrain_echonext_macro_kl_epoch=001-step=33218.ckpt"
+    ]
+    finetune.weight_decay: [0, 1.0e-2]
+    finetune.layer_decay: [1.0]
+    data.batch_size: [128, 256]
 #    finetune.freeze_encoder: [true]
-    finetune.num_freeze_layers: [0, 6, 9]
+    finetune.num_freeze_layers: [0, 1]

@@ -3,8 +3,9 @@ inherit_from: ./finetune_lvr05_high_rfca.yaml
 experiment_name: af_ablation_202602_finetune_lvr05_high_rfca_ssl_i0001_mtae
 
 finetune:
-  pretrained_checkpoint: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_pretrain_emory_i0001_mtae_echonext_longitudinal_gap3_pretrain_20260311_024344/checkpoints/last.ckpt
+#  pretrained_checkpoint: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_pretrain_emory_i0001_mtae_echonext_longitudinal_gap3_pretrain_20260311_024344/checkpoints/last.ckpt
 #  pretrained_checkpoint: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_pretrain_emory_i0001_lejepa_no_ggae_echonext_all_samples_pretrain_20260315_225005/checkpoints/last.ckpt
+  pretrained_checkpoint: /data/projects/study-time-contrast/outputs/lejepa/study_time_contrast_pretrain_emory_i0001_lejepa_ggae_echonext_all_samples_knn_p25_mlp_head_pretrain_20260317_231209/checkpoints/last.ckpt
   scheduler:
     name: linear_warmup_cosine
     interval: epoch

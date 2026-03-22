@@ -1,7 +1,7 @@
 inherit_from: /data/projects/ai-ecg/configs/base.yaml
 
 experiment_name: af_ablation_202602_finetune_lvr05_high_rfca
-output_dir: /data/projects/ai-ecg/outputs/af_ablation_202602
+output_dir: /data/projects/study-af-ablation/outputs
 
 runtime:
   accelerator: gpu
