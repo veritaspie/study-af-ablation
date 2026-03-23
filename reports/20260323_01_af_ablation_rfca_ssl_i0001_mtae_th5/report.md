@@ -189,6 +189,14 @@ set_09  0.8163 | ###################################
 
 최저값이 `0.7957`, 최고값이 `0.8402`였고 표준편차가 `0.0130`이었습니다. 즉 set을 바꿔도 성능이 완전히 무너지지는 않았고, 최소한 "한두 split에만 우연히 맞은 결과"로 보이진 않습니다.
 
+### 4.4 ROC Visualization
+
+![Trial 004 ROC Band And AUROC Visualization](figures/best_trial_roc_band_and_auroc.png)
+
+왼쪽 패널은 surviving checkpoint artifact로부터 CPU eval output을 다시 생성해 10개 sampled set의 ROC를 FPR grid 기준 min-max band로 감싼 것입니다. 오른쪽 패널은 archived `trial_004/set_scores.csv`의 AUROC 값을 그대로 사용해, 본문에 적은 mean/min/max AUROC와 정확히 맞추었습니다.
+
+주의할 점은, 왼쪽 ROC band는 checkpoint-based re-evaluation이고 오른쪽 AUROC 점들은 archived trainer.test 결과라는 점입니다. 현재 남아 있는 checkpoint artifact만으로는 당시 `test_metrics.yaml`와 완전히 동일한 ROC를 재구성할 수 없어, 보고서에서는 두 정보를 분리해 표시했습니다.
+
 ## 5. Interpretation
 
 이번 결과에서 가장 긍정적인 신호는 RFCA task에서 ECG-only representation이 실제 분리 정보를 어느 정도 담고 있다는 점입니다. test positive rate가 약 15.5%인 불균형 상황에서 mean AUROC가 약 0.82라는 것은, pilot 결과로는 충분히 주목할 만합니다.

@@ -1,0 +1,10 @@
+{
+  "archived_mean_auroc": 0.8198779404163361,
+  "archived_std_auroc": 0.012991935065363187,
+  "archived_min_auroc": 0.7956989407539368,
+  "archived_max_auroc": 0.8401627540588379,
+  "n_sets": 10,
+  "figure_path": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/figures/best_trial_roc_band_and_auroc.png",
+  "roc_band_source": "checkpoint-based eval outputs",
+  "auroc_points_source": "archived trial_004/set_scores.csv"
+}

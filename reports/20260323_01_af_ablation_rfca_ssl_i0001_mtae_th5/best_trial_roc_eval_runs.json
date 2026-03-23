@@ -1,0 +1,62 @@
+[
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s00_finetune_20260316_003754",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s00_finetune_20260316_003754",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s00_roc_eval_eval_20260323_214703",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s00_roc_eval_eval_20260323_214703/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s01_finetune_20260316_003831",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s01_finetune_20260316_003831",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s01_roc_eval_eval_20260323_214719",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s01_roc_eval_eval_20260323_214719/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s02_finetune_20260316_003908",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s02_finetune_20260316_003908",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s02_roc_eval_eval_20260323_214734",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s02_roc_eval_eval_20260323_214734/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s03_finetune_20260316_003945",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s03_finetune_20260316_003945",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s03_roc_eval_eval_20260323_214748",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s03_roc_eval_eval_20260323_214748/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_finetune_20260316_004022",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_finetune_20260316_004022",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_roc_eval_eval_20260323_214802",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_roc_eval_eval_20260323_214802/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s05_finetune_20260316_004059",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s05_finetune_20260316_004059",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s05_roc_eval_eval_20260323_214817",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s05_roc_eval_eval_20260323_214817/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s06_finetune_20260316_004135",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s06_finetune_20260316_004135",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s06_roc_eval_eval_20260323_214832",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s06_roc_eval_eval_20260323_214832/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_finetune_20260316_004211",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_finetune_20260316_004211",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_roc_eval_eval_20260323_214848",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_roc_eval_eval_20260323_214848/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s08_finetune_20260316_004245",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s08_finetune_20260316_004245",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s08_roc_eval_eval_20260323_214904",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s08_roc_eval_eval_20260323_214904/test_outputs.csv"
+  },
+  {
+    "set_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s09_finetune_20260316_004320",
+    "source_run_dir": "/data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s09_finetune_20260316_004320",
+    "eval_run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s09_roc_eval_eval_20260323_214920",
+    "test_outputs_csv": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s09_roc_eval_eval_20260323_214920/test_outputs.csv"
+  }
+]

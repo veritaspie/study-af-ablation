@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-03-23T21:48:48",
+  "stage": "eval",
+  "experiment_name": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_roc_eval",
+  "title": "af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_roc_eval",
+  "tags": [],
+  "summary": "",
+  "run_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_roc_eval_eval_20260323_214848",
+  "note_path": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_roc_eval_eval_20260323_214848/paper_notes.md",
+  "config_path": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_configs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s07_finetune_20260316_004211_eval.yaml"
+}

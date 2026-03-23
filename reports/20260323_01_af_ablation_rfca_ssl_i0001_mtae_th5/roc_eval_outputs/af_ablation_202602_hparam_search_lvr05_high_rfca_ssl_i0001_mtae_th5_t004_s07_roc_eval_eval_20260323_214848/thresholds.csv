@@ -1,0 +1,2 @@
+target,threshold,rule
+LVR05_high,0.3926087,max_youden

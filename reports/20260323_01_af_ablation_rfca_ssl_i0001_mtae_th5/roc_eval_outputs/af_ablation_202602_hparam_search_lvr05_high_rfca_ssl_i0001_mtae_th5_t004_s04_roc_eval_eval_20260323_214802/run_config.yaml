@@ -1,0 +1,300 @@
+seed: 46
+output_dir: /data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_outputs
+experiment_name: af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_roc_eval
+runtime:
+  accelerator: cpu
+  devices: 1
+  strategy: auto
+  precision: 32
+  max_epochs: 1
+  log_every_n_steps: 20
+  num_sanity_val_steps: 0
+  accumulate_grad_batches: 1
+  fast_dev_run: false
+data:
+  source: zarr
+  manifest_path: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/sampled_sets/set_04_manifest.parquet
+  split_column: split
+  split_values:
+    train: train
+    valid: valid
+    test: test
+  label_columns:
+  - LVR05_high
+  sample_rate_column: sample_rate
+  signal_length: 2250
+  leads:
+  - I
+  - II
+  - III
+  - AVR
+  - AVL
+  - AVF
+  - V1
+  - V2
+  - V3
+  - V4
+  - V5
+  - V6
+  batch_size: 128
+  num_workers: 0
+  ssl_pair_views: false
+  ssl_pair_views_train_only: true
+  ssl_views:
+    enabled: false
+    train_only: true
+    eval_deterministic: true
+    num_global_views: 2
+    num_local_views: 0
+    local:
+      lead_subset:
+        enabled: false
+        strategy: random_subset
+        min_leads: 3
+        max_leads: 6
+  read_error_policy: skip_retry
+  read_error_max_retries: 16
+  read_error_log_limit: 50
+  read_error_log_every: 500
+  preprocessing:
+    enabled: true
+    target_sample_rate: 250
+    crop_seconds: 9.0
+    train_crop_mode: random
+    eval_crop_mode: fixed
+    fixed_crop_position: start
+    fixed_start_sec: 0.0
+    high_pass:
+      enabled: false
+      cutoff: 0.67
+      order: 5
+    low_pass:
+      enabled: false
+      cutoff: 40.0
+      order: 5
+    standardize: true
+    augmentation:
+      enabled: true
+      op_names:
+      - shift
+      - cutout
+      - drop
+      - flip
+      - erase
+      - sine
+      - partial_sine
+      - partial_white_noise
+      level: 10
+      num_layers: 2
+      prob: 0.5
+      max_proportion_const: 0.3
+      wave_amplitude_const: 0.3
+      wave_frequency_const: 0.5
+      white_noise_scale_const: 0.3
+    eval_fixed_start_secs:
+    - 0.0
+    - 0.5
+    - 1.0
+  pkl:
+    path_column: pkl_path
+    value_scale: 1.0
+  zarr:
+    store_column: zarr_store
+    group_column: zarr_group
+    ds_idx_column: ds_idx
+    ds_row_idx_column: ds_row_idx
+    dataset_names:
+    - fs500
+    - fs250
+    value_scale: 4.0
+  downsample_to_signal_length: true
+model:
+  vit:
+    in_channels: 12
+    seq_len: 2250
+    patch_size: 25
+    embed_dim: 768
+    depth: 12
+    mlp_dim: 3072
+    heads: 12
+    dim_head: 64
+    dropout: 0.0
+    attn_dropout: 0.0
+    use_cls_token: true
+    sinusoid_pos_embed: true
+    pooling: cls_or_mean
+    num_classes: 1
+ssl:
+  method: mtae
+  mask_ratio: 0.9
+  norm_pix_loss: false
+  loss: mse
+  lr: 0.0001
+  blr: null
+  min_lr: 0.0
+  warmup_epochs: 0
+  weight_decay: 0.05
+  decoder:
+    embed_dim: 128
+    depth: 2
+    mlp_dim: 256
+    heads: 4
+    dim_head: 32
+    dropout: 0.0
+    attn_dropout: 0.0
+  scheduler:
+    name: cosine
+    interval: epoch
+    t_max: 100
+  analysis:
+    enabled: false
+    augmentation_aliases: {}
+    callbacks: []
+  lejepa:
+    lambda_weight: 0.05
+    projection_dim: null
+    projection_hidden_dim: null
+    projection_layers: 1
+    num_slices: 64
+    quadrature_min: -5.0
+    quadrature_max: 5.0
+    quadrature_points: 17
+    resample_slices_each_step: true
+    lr: null
+    blr: 0.00015
+    min_lr: 0.0
+    warmup_epochs: 0
+    weight_decay: 0.05
+  moco:
+    momentum: 0.99
+    temperature: 0.2
+    projection_dim: 128
+    projection_mlp_dim: 512
+    lr: 0.0001
+    blr: null
+    min_lr: 0.0
+    warmup_epochs: 0
+    weight_decay: 0.05
+  graph_geometry:
+    enabled: false
+    objective: both
+    warmup_steps: 1000
+    apply_every_n_steps: 4
+    lambda_ggae: 0.1
+    lambda_supcon: 0.05
+    dataset: emory_i0001_longitudinal
+    temporal:
+      directions:
+      - past
+      - future
+      year_window:
+      - 2
+      - 5
+      fallback: nearest
+      batch_consistent: true
+    graph_batch:
+      local_batch_size: 512
+      forward_batch_size: 128
+      knn_k: 32
+      metric: cosine
+      geodesic: shortest_path_on_knn
+      bandwidth: knn_median
+      drop_if_no_pair: true
+    feature_space:
+      source: dedicated_mlp_head
+      output_dim: 128
+      native_head: auto
+      attention_pool:
+        query_mode: random_resample
+        num_queries: 1
+    ggae:
+      impl: trace_low_rank
+      exact_dense_threshold: 64
+      local_support_k: 32
+    supcon:
+      temperature: 0.1
+      positives: graph_topk
+      positive_k: 8
+      positive_threshold: null
+    ddp:
+      shard_graph_batch: true
+      broadcast_temporal_policy: true
+finetune:
+  lr: 0.001
+  weight_decay: 0.01
+  layer_decay: 0.8
+  num_freeze_layers: 0
+  freeze_encoder: false
+  pretrained_checkpoint: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_pretrain_emory_i0001_mtae_echonext_longitudinal_gap3_pretrain_20260311_024344/checkpoints/last.ckpt
+  run_test_after_fit: true
+  scheduler:
+    name: linear_warmup_cosine
+    t_max: 50
+    interval: epoch
+    warmup_epochs: 2
+    warmup_start_factor: 0.1
+    min_lr: 1.0e-05
+    cosine_t_max: 5
+eval:
+  checkpoint_path: /data/projects/ai-ecg/outputs/af_ablation_202602/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_hparam_search_20260316_001959/trial_004/runs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_finetune_20260316_004022/checkpoints/finetune_epoch=002-val_loss=0.5794.ckpt
+  threshold_rule: max_youden
+pretrain:
+  trainer:
+    max_epochs: 1
+finetune_cmd:
+  trainer:
+    max_epochs: 10
+    accumulate_grad_batches: 1
+eval_cmd:
+  trainer: {}
+hparam_search:
+  framework: grid
+  trial_limit: 25
+  n_sample_sets: 10
+  objective_metric: test_macro_auroc
+  maximize: true
+  grid_shuffle: true
+  sample:
+    seed: 42
+    group_column: pid
+    replacement: false
+    train_frac: 1.0
+    valid_frac: 1.0
+    test_frac: 1.0
+  search_space:
+    finetune.lr:
+    - 0.03
+    - 0.01
+    - 0.001
+    - 0.0003
+    - 0.0001
+    finetune.weight_decay:
+    - 0.01
+    - 0.05
+    finetune.layer_decay:
+    - 0.5
+    - 0.8
+    - 0.9
+    - 1.0
+    data.batch_size:
+    - 16
+    - 32
+    - 64
+    - 128
+    finetune.num_freeze_layers:
+    - 0
+    - 6
+    - 9
+run_provenance:
+  written_at: '2026-03-23T21:48:02'
+  stage: eval
+  config_path: /data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5/roc_eval_configs/af_ablation_202602_hparam_search_lvr05_high_rfca_ssl_i0001_mtae_th5_t004_s04_finetune_20260316_004022_eval.yaml
+  ai_ecg:
+    repo_root: /data/projects/ai-ecg
+    git:
+      available: true
+      commit: cbb8bcb8675d6dbcf342b85a8e936ccbc2da44a6
+      short_commit: cbb8bcb
+      branch: main
+      describe: cbb8bcb
+      is_dirty: null
