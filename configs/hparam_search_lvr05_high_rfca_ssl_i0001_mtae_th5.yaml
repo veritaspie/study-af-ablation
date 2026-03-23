@@ -28,4 +28,4 @@ hparam_search:
     finetune.layer_decay: [1.0]
     data.batch_size: [128, 256]
 #    finetune.freeze_encoder: [true]
-    finetune.num_freeze_layers: [0, 1]
+    finetune.num_freeze_layers: [11, 12]
