@@ -1,9 +1,39 @@
 # RFCA Zarr Manifest Statistics
 
 - Generated at: `2026-03-04 00:52:53 +0900`
-- Manifest: `/data/projects/study-af-ablation/manifests/finetune_lvr05_high_rfca.parquet`
+- Manifest: `/data/projects/study-af-ablation/manifests/finetune_lvr05_high_rfca_th5.parquet`
 - Metadata: `/data/ecg/zarr/rfca.log/metadata_full.parquet`
 - Ablation table: `/data/projects/af_ablation/test/assets/V_ABLATION(2025-11-30).csv`
+
+## 0) Cohort Boundaries
+
+The RFCA-related tables in this study are not the same cohort and should be read separately.
+
+| cohort | source | n_rows_or_ecg | n_pid | note |
+| --- | --- | --- | --- | --- |
+| Raw XML ECG cohort | `/data/raw/AF_ABLATION` | 30199 | 1242 | full XML source inventory |
+| CRF total cohort | `V_ABLATION(2025-11-30).csv` | 1321 rows | 1244 | includes many blank `LVR05_TotalLB` rows |
+| CRF labeled cohort | same CRF table | 738 rows | 722 | only rows/PIDs with non-null `LVR05_TotalLB` |
+| Active RFCA TH5 manifest | `finetune_lvr05_high_rfca_th5.parquet` | 1961 ECG | 713 | actual training/eval dataset |
+
+Key distinction:
+
+- The current TH5 training dataset PID group is a subset of the CRF labeled cohort, not the full CRF cohort.
+- `LVR05_TotalLB` blank rows exist in the CRF, so CRF total PID counts and label-eligible PID counts differ.
+- There are `9` labeled CRF PIDs that still do not enter the current TH5 manifest.
+
+## 0b) Duplicate XML Content Caveat
+
+Raw XML filenames are not guaranteed to represent unique ECG content.
+
+| metric | value |
+| --- | --- |
+| raw XML rows | 30199 |
+| unique XML content hashes | 26069 |
+| duplicate-content groups | 3642 |
+| rows involved in duplicate content | 7772 |
+
+For downstream joins and subgroup analysis, use the generated management tables rather than assuming filename uniqueness.
 
 ## 1) Split Snapshot
 | split | n_ecg | n_pid | positive_rate | lvr05_mean_ecg | age_mean_ecg |
@@ -110,3 +140,5 @@
 - `LVR05_TotalLB` is reconstructed with the same cohort matching logic used in `build_finetune_manifest_rfca_zarr.py` (anchor window + per-PID earliest procedure).
 - Train split contains repeated ECGs per PID by design; therefore ECG-level and patient-level summaries are both provided.
 - Age/Sex are parsed from `hea_raw_text` XML fields (`PatientAge`, `AgeUnits`, `Gender`).
+- Generated management tables live under `/data/projects/study-af-ablation/manifests/rfca_management/`.
+- Recommended join tables are documented in `rfca_cohort_and_management_tables.md`.

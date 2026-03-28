@@ -20,6 +20,7 @@ experiment assets.
 
 Key data note:
 - [`data/af_ablation_source_and_preprocessing.md`](./data/af_ablation_source_and_preprocessing.md)
+- [`data/rfca_cohort_and_management_tables.md`](./data/rfca_cohort_and_management_tables.md)
 
 ## ai-ecg dependency
 

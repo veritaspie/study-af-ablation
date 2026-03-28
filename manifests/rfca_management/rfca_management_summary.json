@@ -1,0 +1,23 @@
+{
+  "anchor_window_days": 90,
+  "train_window_days": 180,
+  "xml_total_rows": 30199,
+  "xml_unique_pid": 1242,
+  "xml_unique_content_hash": 26069,
+  "xml_duplicate_content_groups": 3642,
+  "xml_duplicate_content_rows": 7772,
+  "crf_total_rows": 1321,
+  "crf_unique_pid": 1244,
+  "crf_lvr05_nonnull_rows": 738,
+  "crf_lvr05_nonnull_pid": 722,
+  "manifest_total_rows": 1961,
+  "manifest_unique_pid": 713,
+  "manifest_pid_not_in_crf": 0,
+  "crf_pid_not_in_manifest": 531,
+  "labeled_crf_pid_not_in_manifest": 9,
+  "table_paths": {
+    "ecg_inventory": "/data/projects/study-af-ablation/manifests/rfca_management/rfca_ecg_inventory.parquet",
+    "pid_crf": "/data/projects/study-af-ablation/manifests/rfca_management/rfca_pid_crf_table.parquet",
+    "training_ecg_labels": "/data/projects/study-af-ablation/manifests/rfca_management/rfca_training_ecg_labels_th5.parquet"
+  }
+}

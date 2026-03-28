@@ -441,11 +441,14 @@ def main() -> int:
         preferred=args.sample_id_column,
         fallback_cols=[args.meta_id_column, INDEX_FILE_COLUMN],
     )
+    file_name = sample_id.astype("string").str.strip()
+    file_name = file_name.where(file_name.str.lower().str.endswith(".xml"), file_name + ".xml")
 
     manifest = pd.DataFrame(
         {
             "split": merged["split"].astype(str).to_numpy(),
             "sample_id": sample_id.astype(str).to_numpy(),
+            "file_name": file_name.astype(str).to_numpy(),
             "sample_rate": sample_rate.to_numpy(),
             args.label_column: pd.to_numeric(merged[args.label_column], errors="coerce").astype(np.float32).to_numpy(),
             "zarr_store": zarr_store,
