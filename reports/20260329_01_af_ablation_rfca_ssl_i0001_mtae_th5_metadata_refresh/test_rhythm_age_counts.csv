@@ -1,0 +1,13 @@
+rhythm_class,age_group,n,pos,neg
+afib,0-59,19,1.0,18.0
+afib,60-69,28,9.0,19.0
+afib,70+,13,12.0,1.0
+afib,missing,5,0.0,5.0
+flutter,0-59,2,1.0,1.0
+flutter,60-69,4,1.0,3.0
+flutter,70+,1,0.0,1.0
+other,70+,1,0.0,1.0
+sinus,0-59,19,2.0,17.0
+sinus,60-69,28,2.0,26.0
+sinus,70+,16,3.0,13.0
+sinus,missing,6,0.0,6.0

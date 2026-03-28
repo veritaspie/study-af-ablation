@@ -1,0 +1,7 @@
+{
+  "source_report_dir": "/data/projects/study-af-ablation/reports/20260323_01_af_ablation_rfca_ssl_i0001_mtae_th5",
+  "n_runs": 10,
+  "test_rows": 142,
+  "test_unique_pid": 142,
+  "figure_path": "/data/projects/study-af-ablation/reports/20260329_01_af_ablation_rfca_ssl_i0001_mtae_th5_metadata_refresh/figures/metadata_refresh_subgroup_summary.png"
+}
