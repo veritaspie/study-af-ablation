@@ -1,0 +1,4 @@
+rhythm,n_aggregated,pos_aggregated,neg_aggregated,auroc_pooled,auroc_ci_lower_95_delong,auroc_ci_upper_95_delong,auprc_pooled,ci_method,source
+AFib,640,220,420,0.7349675324675324,0.6960443479610754,0.7738907169739895,0.5243757743747941,DeLong 95% CI,concatenated checkpoint-based test outputs across 10 sampled sets
+AFL,70,20,50,1.0,1.0,1.0,1.0000000000000002,DeLong 95% CI,concatenated checkpoint-based test outputs across 10 sampled sets
+NSR,690,70,620,0.6167281105990784,0.5447687748637061,0.6886874463344507,0.26053646501859995,DeLong 95% CI,concatenated checkpoint-based test outputs across 10 sampled sets

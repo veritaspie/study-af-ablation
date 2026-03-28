@@ -18,6 +18,9 @@ experiment assets.
 - `data/`: durable data notes and manifest statistics
 - `manifests/`: local generated manifests only (`.parquet` is gitignored)
 
+Key data note:
+- [`data/af_ablation_source_and_preprocessing.md`](./data/af_ablation_source_and_preprocessing.md)
+
 ## ai-ecg dependency
 
 The shared runtime stays in `/data/projects/ai-ecg`.

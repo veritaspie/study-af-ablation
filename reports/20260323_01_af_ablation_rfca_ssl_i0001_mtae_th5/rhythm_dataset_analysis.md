@@ -17,7 +17,7 @@ manifest 생성 스크립트는 `/data/projects/study-af-ablation/scripts/build_
 
 ## Rhythm Mix By Split
 
-![Rhythm Mix And Subgroup AUROC](figures/rhythm_mix_and_subgroup_auroc.png)
+![Rhythm-Split Violin And Subgroup AUROC](figures/rhythm_violin_and_subgroup.png)
 
 | split | rhythm | n | positive | negative | positive rate |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -44,17 +44,19 @@ manifest 생성 스크립트는 `/data/projects/study-af-ablation/scripts/build_
 
 ## Best Trial Subgroup Performance
 
-아래 subgroup 성능은 best trial의 surviving checkpoint artifact로부터 다시 생성한 test output 기준입니다. 따라서 archived `trainer.test` 수치와 완전히 같은 값은 아니고, exploratory subgroup view로 해석해야 합니다.
+아래 subgroup 성능은 best trial의 surviving checkpoint artifact로부터 다시 생성한 test output을 10개 sampled set 기준으로 concat한 뒤 계산한 pooled 결과입니다. AUROC error bar는 95% DeLong CI를 사용합니다.
 
-| subgroup | n | pos | neg | mean AUROC | std | mean AUPRC |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| afib | 64 | 22 | 42 | 0.749 | 0.015 | 0.546 |
-| sinus | 69 | 7 | 62 | 0.623 | 0.033 | 0.290 |
-| flutter | 7 | 2 | 5 | 1.000 | 0.000 | 1.000 |
+| subgroup | aggregated n | aggregated pos | aggregated neg | pooled AUROC | 95% DeLong CI | pooled AUPRC |
+| --- | ---: | ---: | ---: | ---: | --- | ---: |
+| AFib | 640 | 220 | 420 | 0.735 | [0.696, 0.774] | 0.524 |
+| AFL | 70 | 20 | 50 | 1.000 | [1.000, 1.000] | 1.000 |
+| NSR | 690 | 70 | 620 | 0.617 | [0.545, 0.689] | 0.261 |
+
+민감도/특이도 막대를 추가할 때는 95% Clopper-Pearson CI를 사용합니다.
 
 ## 추가 insight
 
-- AFib subgroup의 checkpoint-based mean AUROC가 sinus subgroup보다 높았습니다.
+- AFib subgroup의 pooled checkpoint-based AUROC가 NSR subgroup보다 높았습니다.
 - 하지만 AFib subgroup은 positive prevalence 자체가 더 높기 때문에, 이 차이를 "모델이 AFib에서 더 잘 일반화한다"고 단정하면 안 됩니다.
 - 오히려 현재 설정에서는 모델이 rhythm/state 차이를 일부 proxy로 사용할 가능성이 있다는 해석이 더 보수적입니다.
 - flutter subgroup은 샘플 수가 7개뿐이라 수치 해석 가치가 거의 없습니다.

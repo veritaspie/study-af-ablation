@@ -211,9 +211,9 @@ set_09  0.8163 | ###################################
 
 ### 4.5 Rhythm Composition And Subgroup Signal
 
-![Rhythm Mix And Subgroup AUROC](figures/rhythm_mix_and_subgroup_auroc.png)
+![Rhythm Mix And Subgroup AUROC](figures/rhythm_violin_and_subgroup.png)
 
-현재 RFCA TH5 manifest는 AFib-only dataset이 아닙니다. manifest 생성은 rhythm filter가 아니라 procedure 이전 시간창과 PID split을 기준으로 이뤄졌고, 그 결과 train/valid/test 모두 AFib, sinus, atrial flutter가 함께 들어 있습니다.
+현재 figure의 왼쪽 패널은 best trial의 checkpoint-based test output을 10개 sampled set 기준으로 합쳐, AFib/AFL/NSR 각각에 대해 negative와 positive를 분리한 paired violin plot으로 `prob_LVR05_high` 분포를 보여줍니다. 현재 RFCA TH5 manifest는 AFib-only dataset이 아닙니다. manifest 생성은 rhythm filter가 아니라 procedure 이전 시간창과 PID split을 기준으로 이뤄졌고, 그 결과 train/valid/test 모두 AFib, sinus, atrial flutter가 함께 들어 있습니다.
 
 특히 target prevalence가 rhythm subgroup에 따라 다릅니다.
 
@@ -226,13 +226,15 @@ set_09  0.8163 | ###################################
 | test | AFib | 64 | 22 | 0.344 |
 | test | sinus | 69 | 7 | 0.101 |
 
-best trial의 checkpoint-based test subgroup 성능도 AFib와 sinus 사이에 차이를 보였습니다.
+figure의 오른쪽 subgroup panel은 10개 sampled set의 checkpoint-based test output을 concat한 뒤 pooled AUROC와 95% DeLong CI로 그렸습니다.
 
-| subgroup | n | pos | neg | mean AUROC | std | mean AUPRC |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| AFib | 64 | 22 | 42 | 0.749 | 0.015 | 0.546 |
-| sinus | 69 | 7 | 62 | 0.623 | 0.033 | 0.290 |
-| flutter | 7 | 2 | 5 | 1.000 | 0.000 | 1.000 |
+| subgroup | aggregated n | aggregated pos | aggregated neg | pooled AUROC | 95% DeLong CI | pooled AUPRC |
+| --- | ---: | ---: | ---: | ---: | --- | ---: |
+| AFib | 640 | 220 | 420 | 0.735 | [0.696, 0.774] | 0.524 |
+| AFL | 70 | 20 | 50 | 1.000 | [1.000, 1.000] | 1.000 |
+| NSR | 690 | 70 | 620 | 0.617 | [0.545, 0.689] | 0.261 |
+
+CI convention은 아래처럼 고정합니다. AUROC bar는 95% DeLong CI를 사용하고, sensitivity/specificity bar는 95% Clopper-Pearson CI를 사용합니다.
 
 이 차이는 중요한 finding이지만, 그대로 "AFib subgroup에서 모델이 더 잘 동작한다"고 결론내리면 과해집니다. 더 보수적인 해석은 현재 관측된 predictive signal 일부가 structural burden 자체뿐 아니라 rhythm/state 차이와 결합돼 있을 수 있다는 것입니다. flutter는 표본 수가 `n=7`이라 해석 가치가 거의 없습니다.
 
